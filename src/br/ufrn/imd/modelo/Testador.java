@@ -1,7 +1,6 @@
 package br.ufrn.imd.modelo;
 
 import java.io.IOException;
-import java.util.List;
 
 import br.ufrn.imd.controle.DatasetDAO;
 
@@ -20,9 +19,19 @@ public class Testador {
 			
 			ImageHOG img = new ImageHOG();
 			
-			img.setPath("/home/bmonte/Downloads/1.png");
-			List<Float> arrayFeature = img.extract();
-			System.out.println(arrayFeature);
+			img.setPath("/home/bmonte/Downloads/positive-000353.png");
+			
+			Knn m = new DistanciaEuclidiana();
+			
+			m.setDataset(test.getDataset());
+			m.setImageTest(img.extract());
+			m.setK(1);
+			
+			if (m.calculate()) {
+				System.out.println("É pessoa");
+			} else {
+				System.out.println("Não é pessoa");
+			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();

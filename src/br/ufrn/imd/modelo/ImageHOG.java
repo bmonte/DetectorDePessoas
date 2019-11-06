@@ -11,6 +11,10 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.HOGDescriptor;
 
 public class ImageHOG {
+		static {
+			System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+		}
+		
 		private String path;
 		private List<Float> arrayOfFeatures;
 		
@@ -27,7 +31,6 @@ public class ImageHOG {
 		}
 		
 		public List<Float> extract() {
-			System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 			HOGDescriptor hog = new HOGDescriptor();
 			Mat img = new Mat();
 			MatOfFloat features = new MatOfFloat();
