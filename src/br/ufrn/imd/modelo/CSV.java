@@ -78,12 +78,16 @@ public class CSV implements TypeVerify{
 	
 	@Override
 	public boolean isSomething(String something) {
+		boolean isFloat = false;
+		
 		try {
 			Float.parseFloat(something);
-			return true;
+			isFloat = true;
 		} catch (NumberFormatException e) {
-			return false;
+			isFloat = false;
 		}
+		
+		return isFloat;
 	}
 
 }

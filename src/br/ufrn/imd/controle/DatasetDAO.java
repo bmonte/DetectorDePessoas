@@ -14,11 +14,13 @@ public class DatasetDAO {
 	public void setFile(CSV file) {
 		this.file = file;
 	}
-	public void setDataset(Dataset dataset) {
-		this.dataset = dataset;
+	public Dataset getDataset() {
+		return dataset;
 	}
 	
 	public void fillDataset() throws IOException {
+		dataset = new Dataset();
+		
 		while(file.readInstance()) {
 			img = new Image();
 			
