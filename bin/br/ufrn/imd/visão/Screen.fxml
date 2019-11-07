@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane fx:id="anchor_pane" prefHeight="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controle.InterfaceControle">
+   <children>
+      <TabPane layoutY="-1.0" prefHeight="424.0" prefWidth="519.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="simulation">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #000000;">
+                     <children>
+                        <Button fx:id="start" disable="true" layoutX="199.0" layoutY="185.0" mnemonicParsing="false" onAction="#startSimulation" text="Começar Simulação" />
+                        <Label fx:id="status_label" layoutX="160.0" layoutY="233.0" prefHeight="16.0" prefWidth="220.0" textAlignment="JUSTIFY" textFill="#b57d7d" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="simulation settings">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Accordion layoutX="-2.0" layoutY="-2.0" prefHeight="395.0" prefWidth="519.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <panes>
+                            <TitledPane animated="false" text="Lampada">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0">
+                                       <children>
+                                          <CheckBox layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="75.0" text="Acender" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" text="Ar Condicionado">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="75.0" text="Ligar" />
+                                       </children></AnchorPane>
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" text="Televisão">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="75.0" text="Ligar" />
+                                       </children></AnchorPane>
+                              </content>
+                            </TitledPane>
+                          </panes>
+                        </Accordion>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab text="input settings">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox fx:id="insert_file_check" layoutX="105.0" layoutY="71.0" mnemonicParsing="false" onAction="#selectInsertFile" prefHeight="18.0" prefWidth="129.0" text="Inserir Imagem" />
+                        <CheckBox fx:id="webcam_check" layoutX="325.0" layoutY="71.0" mnemonicParsing="false" onAction="#selectWebcam" prefHeight="17.0" prefWidth="102.0" text="Webcam" />
+                        <Pane fx:id="insert_image_pane" layoutX="134.0" layoutY="177.0" prefHeight="200.0" prefWidth="260.0" visible="false">
+                           <children>
+                              <Button fx:id="file_chooser" mnemonicParsing="false" onAction="#inputFile" text="Selecione um arquivo" />
+                              <ImageView fx:id="image_view" fitHeight="138.0" fitWidth="130.0" layoutX="15.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="warning_label" alignment="CENTER" contentDisplay="CENTER" layoutX="165.0" layoutY="6.0" prefHeight="17.0" prefWidth="81.0" wrapText="true" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

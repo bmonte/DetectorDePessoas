@@ -66,9 +66,9 @@ public abstract class Knn implements TypeVerify{
 		//Pos[0] é qntPessoas, Pos[1] é qntNaoPessoa
 		if (result[0] >= result[1]) {
 			return true;
-		} else {
-			return false;
-		}
+		} 
+		
+		return false;
 	}
 	
 	//Função encontrada na internet para ordenação de Maps by values

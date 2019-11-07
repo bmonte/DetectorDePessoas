@@ -19,18 +19,21 @@ public class Testador {
 			
 			ImageHOG img = new ImageHOG();
 			
-			img.setPath("/home/bmonte/Downloads/positive-000353.png");
-			
-			Knn m = new DistanciaEuclidiana();
-			
-			m.setDataset(test.getDataset());
-			m.setImageTest(img.extract());
-			m.setK(1);
-			
-			if (m.calculate()) {
-				System.out.println("É pessoa");
-			} else {
-				System.out.println("Não é pessoa");
+			for (int i = 0; i < 15; i++) {
+
+				img.setPath("./data/person/" + i + ".png");
+				
+				Knn m = new DistanciaChebychev();
+				
+				m.setDataset(test.getDataset());
+				m.setImageTest(img.extract());
+				m.setK(3);
+				
+				if (m.calculate()) {
+					System.out.println("É pessoa");
+				} else {
+					System.out.println("Não é pessoa");
+				}	
 			}
 			
 		} catch (IOException e) {
