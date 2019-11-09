@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="425.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controle.InputSettingsController">
+   <center>
+      <AnchorPane prefHeight="205.0" prefWidth="525.0" BorderPane.alignment="CENTER">
+         <children>
+            <RadioButton layoutX="62.0" layoutY="95.0" mnemonicParsing="false" text="Insert File" />
+            <RadioButton layoutX="64.0" layoutY="155.0" mnemonicParsing="false" text="Webcam" />
+            <Button layoutX="337.0" layoutY="91.0" mnemonicParsing="false" onAction="#inputFile" text="Choose a image" />
+            <ImageView fx:id="image_view" fitHeight="150.0" fitWidth="200.0" layoutX="288.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="warning_label" layoutX="370.0" layoutY="127.0" prefHeight="17.0" prefWidth="37.0" />
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <MenuBar prefHeight="25.0" prefWidth="83.0" BorderPane.alignment="CENTER">
+         <menus>
+            <Menu mnemonicParsing="false" text="Menu">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#btSimulation" text="Simulation" />
+                  <MenuItem mnemonicParsing="false" onAction="#btSSettings" text="Simulation Settings" />
+                  <MenuItem mnemonicParsing="false" onAction="#btISettings" text="Input Settings" />
+                  <MenuItem mnemonicParsing="false" onAction="#btAbout" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
