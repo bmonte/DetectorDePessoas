@@ -59,12 +59,13 @@ public class DetectorDePessoas extends Application {
 				break;
 		}
 	}
-
-	public static void changeScreen(String src) {
-		changeScreen(src, null);
-	}
+	
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public static void changeScreen(String src) {
+		changeScreen(src, null);
 	}
 	
 	private static ArrayList<OnChangeScreen> listeners = new ArrayList<>();

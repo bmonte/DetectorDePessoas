@@ -31,13 +31,13 @@ public class InputSettingsController {
 		DetectorDePessoas.changeScreen("main", selected_file);
 	}
 	@FXML public void btSSettings() {
-		DetectorDePessoas.changeScreen("simulation_settings");
+		DetectorDePessoas.changeScreen("simulation_settings", selected_file);
 	}
 	@FXML public void btISettings() {
-		DetectorDePessoas.changeScreen("settings");
+		DetectorDePessoas.changeScreen("settings", selected_file);
 	}
 	@FXML public void btAbout() {
-		DetectorDePessoas.changeScreen("about");
+		DetectorDePessoas.changeScreen("about", selected_file);
 	}
 	
 	@FXML public void inputFile(ActionEvent event) throws FileNotFoundException {
