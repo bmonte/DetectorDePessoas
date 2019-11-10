@@ -29,6 +29,9 @@ import javafx.scene.layout.FlowPane;
 
 import com.github.sarxos.webcam.Webcam;
 
+import br.ufrn.imd.DetectorDePessoas;
+import br.ufrn.imd.modelo.WebcamInfo;
+
 public class WebcamController implements Initializable {
 
 	@FXML
@@ -38,13 +41,13 @@ public class WebcamController implements Initializable {
 	Button btnStopCamera;
 
 	@FXML
-	Button btnDisposeCamera;
+	Button btnReturn;
 	
 	@FXML
 	Button btnTakePicture;
 
 	@FXML
-	ComboBox<WebCamInfo> cbCameraOptions;
+	ComboBox<WebcamInfo> cbCameraOptions;
 
 	@FXML
 	BorderPane bpWebCamPaneHolder;
@@ -55,52 +58,33 @@ public class WebcamController implements Initializable {
 	@FXML
 	ImageView imgWebCamCapturedImage;
 
-	private class WebCamInfo {
-
-		private String webCamName;
-		private int webCamIndex;
-
-		public void setWebCamName(String webCamName) {
-			this.webCamName = webCamName;
-		}
-
-		public int getWebCamIndex() {
-			return webCamIndex;
-		}
-
-		public void setWebCamIndex(int webCamIndex) {
-			this.webCamIndex = webCamIndex;
-		}
-
-		@Override
-		public String toString() {
-			return webCamName;
-		}
-	}
-
+	private final String PATH = "./data/picture.png";
+	
 	private BufferedImage grabbedImage;
 	private Webcam selWebCam = null;
 	private boolean stopCamera = false;
+	private boolean picture = false;
 	private ObjectProperty<Image> imageProperty = new SimpleObjectProperty<Image>();
+	private DataController data_controller = new DataController(); 
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		
 		fpBottomPane.setDisable(true);
-		ObservableList<WebCamInfo> options = FXCollections.observableArrayList();
+		ObservableList<WebcamInfo> options = FXCollections.observableArrayList();
 		int webCamCounter = 0;
 		for (Webcam webcam : Webcam.getWebcams()) {
-			WebCamInfo webCamInfo = new WebCamInfo();
+			WebcamInfo webCamInfo = new WebcamInfo();
 			webCamInfo.setWebCamIndex(webCamCounter);
 			webCamInfo.setWebCamName(webcam.getName());
 			options.add(webCamInfo);
 			webCamCounter++;
 		}
 		cbCameraOptions.setItems(options);
-		cbCameraOptions.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<WebCamInfo>() {
+		cbCameraOptions.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<WebcamInfo>() {
 
 			@Override
-			public void changed(ObservableValue<? extends WebCamInfo> arg0, WebCamInfo arg1, WebCamInfo arg2) {
+			public void changed(ObservableValue<? extends WebcamInfo> arg0, WebcamInfo arg1, WebcamInfo arg2) {
 				if (arg2 != null) {
 					initializeWebCam(arg2.getWebCamIndex());
 				}
@@ -113,9 +97,8 @@ public class WebcamController implements Initializable {
 				setImageViewSize();
 			}
 		});
-
 	}
-
+	
 	protected void setImageViewSize() {
 
 		double height = bpWebCamPaneHolder.getHeight();
@@ -203,6 +186,7 @@ public class WebcamController implements Initializable {
 
 	public void stopCamera(ActionEvent event) {
 		stopCamera = true;
+		closeCamera();
 		btnStartCamera.setDisable(false);
 		btnStopCamera.setDisable(true);
 	}
@@ -214,17 +198,19 @@ public class WebcamController implements Initializable {
 		btnStopCamera.setDisable(false);
 	}
 
-	public void disposeCamera(ActionEvent event) {
-		stopCamera = true;
-		closeCamera();
-		btnStopCamera.setDisable(true);
-		btnStartCamera.setDisable(true);
+	public void returnToInput(ActionEvent event) {
+		if (picture) {
+			data_controller.setPath_webcam_picture(PATH);
+		}
+		
+		DetectorDePessoas.changeScreen("input_settings", data_controller);
 	}
 	
 	public void takePicture(ActionEvent event) {
 		BufferedImage image = selWebCam.getImage();
 		try {
-			ImageIO.write(image, "PNG", new File("/home/bmonte/Downloads/webcam_pic.png"));
+			ImageIO.write(image, "PNG", new File(PATH));
+			picture = true;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

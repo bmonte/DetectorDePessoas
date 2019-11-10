@@ -6,19 +6,35 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 
-<BorderPane prefHeight="425.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controle.InputSettingsController">
+<BorderPane prefHeight="400.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controle.InputSettingsController">
    <center>
-      <AnchorPane prefHeight="205.0" prefWidth="525.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="205.0" prefWidth="450.0" BorderPane.alignment="CENTER">
          <children>
-            <RadioButton layoutX="62.0" layoutY="95.0" mnemonicParsing="false" text="Insert File" />
-            <RadioButton layoutX="64.0" layoutY="155.0" mnemonicParsing="false" text="Webcam" />
-            <Button layoutX="337.0" layoutY="91.0" mnemonicParsing="false" onAction="#inputFile" text="Choose a image" />
-            <ImageView fx:id="image_view" fitHeight="150.0" fitWidth="200.0" layoutX="288.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="warning_label" layoutX="370.0" layoutY="127.0" prefHeight="17.0" prefWidth="37.0" />
+            <RadioButton fx:id="insert_file_radio" layoutX="76.0" layoutY="44.0" mnemonicParsing="false" onAction="#show" text="Insert File">
+               <toggleGroup>
+                  <ToggleGroup fx:id="inputToggle" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="webcam_radio" layoutX="275.0" layoutY="44.0" mnemonicParsing="false" onAction="#show" text="Webcam" toggleGroup="$inputToggle" />
+            <Pane fx:id="insert_image_pane" layoutX="15.0" layoutY="72.0" prefHeight="295.0" prefWidth="436.0" visible="false">
+               <children>
+                  <Button layoutX="157.0" layoutY="14.0" mnemonicParsing="false" onAction="#inputFile" text="Choose a image" />
+                  <ImageView fx:id="image_view" fitHeight="230.0" fitWidth="408.0" layoutX="14.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="warning_label" layoutX="139.0" layoutY="251.0" prefHeight="17.0" prefWidth="158.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="webcam_pane" layoutX="23.0" layoutY="72.0" onDragDetected="#show" prefHeight="296.0" prefWidth="406.0" visible="false">
+               <children>
+                  <ImageView fx:id="imgWebCam" fitHeight="227.0" fitWidth="396.0" layoutX="2.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="take_picture" layoutX="89.0" layoutY="14.0" mnemonicParsing="false" onAction="#btTakePicture" text="Take Picture" />
+                  <Button layoutX="212.0" layoutY="14.0" mnemonicParsing="false" onAction="#webcamPreview" text="Show Image" />
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </center>

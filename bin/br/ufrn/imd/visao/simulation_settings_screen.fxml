@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,17 +17,29 @@
               <panes>
                 <TitledPane animated="false" text="Lamp">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                  </content>
-                </TitledPane>
-                <TitledPane animated="false" text="Air Conditioner">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <RadioButton fx:id="lamp_off" layoutX="192.0" layoutY="174.0" mnemonicParsing="false" onAction="#update" text="Turn Off" />
+                              <RadioButton fx:id="lamp_on" layoutX="192.0" layoutY="74.0" mnemonicParsing="false" onAction="#update" text="Turn On" />
+                           </children></AnchorPane>
                   </content>
                 </TitledPane>
                 <TitledPane animated="false" text="Television">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <RadioButton fx:id="tv_on" layoutX="181.0" layoutY="75.0" mnemonicParsing="false" onAction="#update" text="Turn On" />
+                              <RadioButton fx:id="tv_off" layoutX="181.0" layoutY="164.0" mnemonicParsing="false" onAction="#update" text="Turn Off" />
+                           </children></AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="Air Conditioner">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <RadioButton fx:id="ac_off" layoutX="192.0" layoutY="160.0" mnemonicParsing="false" onAction="#update" text="Turn Off" />
+                              <RadioButton fx:id="ac_on" layoutX="192.0" layoutY="65.0" mnemonicParsing="false" onAction="#update" text="Turn On" />
+                           </children></AnchorPane>
                   </content>
                 </TitledPane>
               </panes>

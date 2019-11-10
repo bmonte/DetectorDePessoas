@@ -13,7 +13,6 @@ public abstract class Knn implements TypeVerify{
 	protected int k;
 	protected List<Float> imageTest;
 	protected Dataset dataset;
-	protected Image imageResult;
 	
 	public int getK() {
 		return k;
