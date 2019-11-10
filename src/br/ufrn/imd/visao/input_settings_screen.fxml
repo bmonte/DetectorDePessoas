@@ -21,18 +21,17 @@
                   <ToggleGroup fx:id="inputToggle" />
                </toggleGroup></RadioButton>
             <RadioButton fx:id="webcam_radio" layoutX="275.0" layoutY="44.0" mnemonicParsing="false" onAction="#show" text="Webcam" toggleGroup="$inputToggle" />
-            <Pane fx:id="insert_image_pane" layoutX="15.0" layoutY="72.0" prefHeight="295.0" prefWidth="436.0" visible="false">
+            <Pane fx:id="insert_image_pane" layoutX="8.0" layoutY="73.0" prefHeight="295.0" prefWidth="436.0" visible="false">
                <children>
                   <Button layoutX="157.0" layoutY="14.0" mnemonicParsing="false" onAction="#inputFile" text="Choose a image" />
                   <ImageView fx:id="image_view" fitHeight="230.0" fitWidth="408.0" layoutX="14.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="warning_label" layoutX="139.0" layoutY="251.0" prefHeight="17.0" prefWidth="158.0" />
+                  <Label fx:id="warning_label" layoutX="139.0" layoutY="264.0" prefHeight="17.0" prefWidth="158.0" />
                </children>
             </Pane>
             <Pane fx:id="webcam_pane" layoutX="23.0" layoutY="72.0" onDragDetected="#show" prefHeight="296.0" prefWidth="406.0" visible="false">
                <children>
                   <ImageView fx:id="imgWebCam" fitHeight="227.0" fitWidth="396.0" layoutX="2.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="take_picture" layoutX="89.0" layoutY="14.0" mnemonicParsing="false" onAction="#btTakePicture" text="Take Picture" />
-                  <Button layoutX="212.0" layoutY="14.0" mnemonicParsing="false" onAction="#webcamPreview" text="Show Image" />
+                  <Button fx:id="take_picture" layoutX="154.0" layoutY="14.0" mnemonicParsing="false" onAction="#btTakePicture" text="Take Picture" />
                </children>
             </Pane>
          </children>

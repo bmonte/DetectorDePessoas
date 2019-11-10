@@ -44,7 +44,7 @@ public class MainController {
 		DetectorDePessoas.addOnChangeScreenListener(new DetectorDePessoas.OnChangeScreen() {
 			
 			@Override
-			public void onScreenChanged(String newScreen, DataController data){;
+			public void onScreenChanged(String newScreen, DataController data){
 				if(newScreen.equals("main")) {
 					data_controller.setSelected_file(data.getSelected_file());
 					data_controller.setPath_webcam_picture(data.getPath_webcam_picture());
@@ -86,7 +86,7 @@ public class MainController {
 			ImageHOG image = new ImageHOG();
 			if(data_controller.getInput_chosen() == "insert_file") {
 				image.setPath(data_controller.getSelected_file().getPath());
-			} else {
+			} else if (data_controller.getInput_chosen() == "webcam"){
 				image.setPath(data_controller.getPath_webcam_picture());
 			}
 			knn.setDataset(dataset.getDataset());

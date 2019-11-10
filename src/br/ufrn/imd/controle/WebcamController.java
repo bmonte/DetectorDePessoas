@@ -70,6 +70,24 @@ public class WebcamController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		DetectorDePessoas.addOnChangeScreenListener(new DetectorDePessoas.OnChangeScreen() {
+			
+			@Override
+			public void onScreenChanged(String newScreen, DataController data){
+				if(newScreen.equals("webcam_preview")) {
+					data_controller.setSelected_file(data.getSelected_file());
+					data_controller.setPath_webcam_picture(data.getPath_webcam_picture());
+					data_controller.setInput_chosen(data.getInput_chosen());
+					data_controller.setLamp_on(data.isLamp_on());
+					data_controller.setLamp_off(data.isLamp_off());
+					data_controller.setTv_on(data.isTv_on());
+					data_controller.setTv_off(data.isTv_off());
+					data_controller.setAc_on(data.isAc_on());
+					data_controller.setAc_off(data.isAc_off());
+				}
+			}
+		});
+		
 		fpBottomPane.setDisable(true);
 		ObservableList<WebcamInfo> options = FXCollections.observableArrayList();
 		int webCamCounter = 0;
@@ -204,6 +222,8 @@ public class WebcamController implements Initializable {
 		}
 		
 		DetectorDePessoas.changeScreen("input_settings", data_controller);
+		//Chama a função para parar a execução da webcam
+		stopCamera(event);
 	}
 	
 	public void takePicture(ActionEvent event) {

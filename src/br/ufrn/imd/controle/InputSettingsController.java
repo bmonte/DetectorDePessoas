@@ -37,7 +37,7 @@ public class InputSettingsController {
 		DetectorDePessoas.addOnChangeScreenListener(new DetectorDePessoas.OnChangeScreen() {
 			
 			@Override
-			public void onScreenChanged(String newScreen, DataController data){;
+			public void onScreenChanged(String newScreen, DataController data){
 				if(newScreen.equals("input_settings")) {
 					data_controller.setSelected_file(data.getSelected_file());
 					data_controller.setPath_webcam_picture(data.getPath_webcam_picture());
@@ -96,7 +96,6 @@ public class InputSettingsController {
 		if (data_controller.getPath_webcam_picture() != null) {
 			Image image = new Image(new FileInputStream(data_controller.getPath_webcam_picture()));
 			imgWebCam.setImage(image);
-			warning_label.setText(selected_file.getName());
 		}
 	}
 	
@@ -108,6 +107,7 @@ public class InputSettingsController {
 		} else if (inputToggle.getSelectedToggle().equals(webcam_radio)) {
 			insert_image_pane.setVisible(false);
 			webcam_pane.setVisible(true);
+			data_controller.setInput_chosen("webcam");
 		}
 	}
 }

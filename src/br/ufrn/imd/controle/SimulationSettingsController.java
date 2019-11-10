@@ -20,7 +20,7 @@ public class SimulationSettingsController {
 		DetectorDePessoas.addOnChangeScreenListener(new DetectorDePessoas.OnChangeScreen() {
 			
 			@Override
-			public void onScreenChanged(String newScreen, DataController data){;
+			public void onScreenChanged(String newScreen, DataController data){
 				if(newScreen.equals("simulation_settings")) {
 					data_controller.setSelected_file(data.getSelected_file());
 					data_controller.setPath_webcam_picture(data.getPath_webcam_picture());

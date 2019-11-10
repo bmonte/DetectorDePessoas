@@ -68,7 +68,6 @@ public class DetectorDePessoas extends Application {
 				break;
 			case "webcam_preview":
 				stage.setScene(webcam_preview_scene);
-				stage.centerOnScreen();
 				notifyAllListeners("webcam_preview", data);
 				break;
 			case "about":
