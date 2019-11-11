@@ -27,6 +27,7 @@ public class DetectorDePessoas extends Application {
 	public void start(Stage primary_stage) throws IOException {
 		stage = primary_stage;
 		stage.setTitle("Detector de Pessoas");
+		stage.setResizable(false);
 		
 		Parent fxml_main = FXMLLoader.load(getClass().getResource("visao/main_screen.fxml"));
 		main_scene = new Scene(fxml_main, 450, 400);
