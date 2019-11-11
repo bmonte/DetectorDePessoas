@@ -2,7 +2,7 @@
 
 Este é um programa de **Detecção de Pessoas em Imagens**. O projeto tem como entrada uma imagem, 
 e como saída, a informação da existência ou não de pessoas contidas na mesma. A partir daí, utiliza-se essa 
-informação de para definir algumas simulações (e.g. ligar/desligar aparelho de ar condicionado, ligar/desligar televisões ou ligar/desligar uma lampada).
+informação para definir algumas simulações (e.g. ligar/desligar aparelho de ar condicionado, ligar/desligar televisões ou ligar/desligar uma lampada).
 
 ## Execução
 
