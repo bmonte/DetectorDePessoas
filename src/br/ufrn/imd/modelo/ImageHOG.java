@@ -37,8 +37,9 @@ public class ImageHOG {
 			img = Imgcodecs.imread(this.path, Imgcodecs.IMREAD_GRAYSCALE);
 			Imgproc.resize(img, img, new Size(64,128), 0.5, 0.5, Imgproc.INTER_LINEAR);
 			hog.compute(img,features);
-			this.arrayOfFeatures = features.toList();
-			return this.arrayOfFeatures;
+			arrayOfFeatures = features.toList();
+			
+			return arrayOfFeatures;
 		}
 
 		

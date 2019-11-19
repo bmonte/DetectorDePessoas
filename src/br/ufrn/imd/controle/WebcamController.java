@@ -30,6 +30,7 @@ import javafx.scene.layout.FlowPane;
 import com.github.sarxos.webcam.Webcam;
 
 import br.ufrn.imd.DetectorDePessoas;
+import br.ufrn.imd.modelo.DataController;
 import br.ufrn.imd.modelo.WebcamInfo;
 
 public class WebcamController implements Initializable {

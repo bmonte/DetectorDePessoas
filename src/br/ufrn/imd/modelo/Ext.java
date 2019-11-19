@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Ext{
-	private static String[] allowed_extensions = new String[] {".png", ".jpeg", ".jpg", ".gif"};
+	private static String[] allowed_extensions = new String[] {".png"};
 	
 	public static boolean verifyExtension(String extension) {
 		List<String> list = Arrays.asList(allowed_extensions);

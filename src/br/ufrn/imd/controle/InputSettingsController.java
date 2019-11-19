@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import br.ufrn.imd.DetectorDePessoas;
+import br.ufrn.imd.modelo.DataController;
 import br.ufrn.imd.modelo.Ext;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 
 public class InputSettingsController {
@@ -30,6 +32,7 @@ public class InputSettingsController {
 		@FXML private Label warning_label;
 		@FXML private ImageView image_view;
 		@FXML private ImageView imgWebCam;
+		
 		private File selected_file;
 		private DataController data_controller = new DataController();
 		
@@ -84,10 +87,17 @@ public class InputSettingsController {
 			if(Ext.verifyExtension(extension)) {
 				Image image = new Image(new FileInputStream(selected_file.getPath()));
 				image_view.setImage(image);
+				
 				warning_label.setText(selected_file.getName());
+				warning_label.setTextFill(Color.BLACK);
+				
 				data_controller.setSelected_file(selected_file);
 			} else {
+				selected_file = null;
+				image_view.setImage(null);
+				
 				warning_label.setText("Tipo inválido");
+				warning_label.setTextFill(Color.RED);
 			}
 		}
 	}
@@ -104,6 +114,7 @@ public class InputSettingsController {
 			webcam_pane.setVisible(false);
 			insert_image_pane.setVisible(true);
 			data_controller.setInput_chosen("insert_file");
+			
 		} else if (inputToggle.getSelectedToggle().equals(webcam_radio)) {
 			insert_image_pane.setVisible(false);
 			webcam_pane.setVisible(true);

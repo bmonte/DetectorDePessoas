@@ -45,10 +45,19 @@ public abstract class Knn implements TypeVerify{
 		imageDistanceMap = sortByValue(imageDistanceMap);
 		
 		int index = 0;
-		int[] result = new int[2];
+		int[] result = new int[3];
 		
 		for (Image key : imageDistanceMap.keySet()) {
 		    if (index++ < k) {
+		    	//Pega a imagem mais proxima e armazena o resultado
+				if(index == 1) {
+			        if (isSomething(key.getLabel())) {
+						result[2] = 1;
+					} else {
+						result[2] = 0;
+					}
+				}
+				
 		        if (isSomething(key.getLabel())) {
 					result[0]++;
 				} else {
@@ -63,10 +72,16 @@ public abstract class Knn implements TypeVerify{
 	}
 	
 	public boolean setLabel(int[] result) {
-		//Pos[0] é qntPessoas, Pos[1] é qntNaoPessoa
-		if (result[0] >= result[1]) {
+		//Pos[0] é qntPessoas, Pos[1] é qntNaoPessoa, Pos[2] é o valor da imagem mais proxima
+		if (result[0] > result[1]) {
 			return true;
-		} 
+		} else if (result[0] == result[1]) {
+			if (result[2] == 1) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 		
 		return false;
 	}

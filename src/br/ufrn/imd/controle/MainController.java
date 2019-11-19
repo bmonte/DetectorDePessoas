@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import br.ufrn.imd.DetectorDePessoas;
 import br.ufrn.imd.modelo.CSV;
+import br.ufrn.imd.modelo.DataController;
 import br.ufrn.imd.modelo.DistanciaChebychev;
 import br.ufrn.imd.modelo.DistanciaEuclidiana;
 import br.ufrn.imd.modelo.DistanciaManhattan;
@@ -29,7 +30,7 @@ public class MainController {
 	@FXML private Slider k_slider;
 	@FXML private Label k_label;
 	@FXML private Label status_label;
-	@FXML private ListView list_view;
+	@FXML private ListView<String> list_view;
 	
 	private Knn knn;
 	private int count_simulation = 0;
@@ -78,7 +79,7 @@ public class MainController {
 	@FXML public void startSimulation(ActionEvent event) throws IOException {
 		try {
 			CSV file = new CSV();
-			file.setPath("./data/dataset_2019_1.csv");
+			file.setPath("./data/teste_2019_1.csv");
 			DatasetDAO dataset = new DatasetDAO();
 			dataset.setFile(file);
 			dataset.fillDataset();
@@ -86,7 +87,7 @@ public class MainController {
 			ImageHOG image = new ImageHOG();
 			if(data_controller.getInput_chosen() == "insert_file") {
 				image.setPath(data_controller.getSelected_file().getPath());
-			} else if (data_controller.getInput_chosen() == "webcam"){
+			} else {
 				image.setPath(data_controller.getPath_webcam_picture());
 			}
 			knn.setDataset(dataset.getDataset());

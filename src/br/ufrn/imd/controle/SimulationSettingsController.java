@@ -1,6 +1,7 @@
 package br.ufrn.imd.controle;
 
 import br.ufrn.imd.DetectorDePessoas;
+import br.ufrn.imd.modelo.DataController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;

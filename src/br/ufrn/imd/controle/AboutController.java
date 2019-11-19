@@ -1,6 +1,7 @@
 package br.ufrn.imd.controle;
 
 import br.ufrn.imd.DetectorDePessoas;
+import br.ufrn.imd.modelo.DataController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -14,7 +15,7 @@ public class AboutController {
 			
 			@Override
 			public void onScreenChanged(String newScreen, DataController data){
-				if(newScreen.equals("input_settings")) {
+				if(newScreen.equals("about")) {
 					data_controller.setSelected_file(data.getSelected_file());
 					data_controller.setPath_webcam_picture(data.getPath_webcam_picture());
 					data_controller.setInput_chosen(data.getInput_chosen());
@@ -31,16 +32,16 @@ public class AboutController {
 	}
 	
 	@FXML protected void btSimulation(ActionEvent event) {
-		DetectorDePessoas.changeScreen("main");
+		DetectorDePessoas.changeScreen("main", data_controller);
 	}
 	@FXML protected void btSSettings(ActionEvent event) {
-		DetectorDePessoas.changeScreen("simulation_settings");
+		DetectorDePessoas.changeScreen("simulation_settings", data_controller);
 	}
 	@FXML protected void btISettings(ActionEvent event) {
-		DetectorDePessoas.changeScreen("input_settings");
+		DetectorDePessoas.changeScreen("input_settings", data_controller);
 	}
 	@FXML protected void btAbout(ActionEvent event) {
-		DetectorDePessoas.changeScreen("about");
+		DetectorDePessoas.changeScreen("about", data_controller);
 	}
 	
 

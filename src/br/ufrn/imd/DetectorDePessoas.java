@@ -3,7 +3,7 @@ package br.ufrn.imd;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import br.ufrn.imd.controle.DataController;
+import br.ufrn.imd.modelo.DataController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -69,6 +69,7 @@ public class DetectorDePessoas extends Application {
 				break;
 			case "webcam_preview":
 				stage.setScene(webcam_preview_scene);
+				stage.centerOnScreen();
 				notifyAllListeners("webcam_preview", data);
 				break;
 			case "about":
